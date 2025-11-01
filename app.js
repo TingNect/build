@@ -14,11 +14,51 @@ const performanceData = [
 ];
 
 const allocationData = [
-  { name: 'Bất động sản thương mại', value: 36, color: '#4f46e5' },
-  { name: 'Cơ sở hạ tầng', value: 24, color: '#0ea5e9' },
-  { name: 'Thiết bị công nghiệp', value: 18, color: '#22c55e' },
-  { name: 'Năng lượng tái tạo', value: 14, color: '#f59e0b' },
-  { name: 'Khác', value: 8, color: '#a855f7' }
+  {
+    name: 'Bất động sản thương mại',
+    value: 36,
+    color: '#4f46e5',
+    yield: '6.8%',
+    yoy: '+3.2%',
+    income: '$1.52M',
+    activeAssets: 18
+  },
+  {
+    name: 'Cơ sở hạ tầng',
+    value: 24,
+    color: '#0ea5e9',
+    yield: '5.9%',
+    yoy: '+2.5%',
+    income: '$920K',
+    activeAssets: 11
+  },
+  {
+    name: 'Thiết bị công nghiệp',
+    value: 18,
+    color: '#22c55e',
+    yield: '7.4%',
+    yoy: '+4.1%',
+    income: '$610K',
+    activeAssets: 22
+  },
+  {
+    name: 'Năng lượng tái tạo',
+    value: 14,
+    color: '#f59e0b',
+    yield: '8.1%',
+    yoy: '+6.7%',
+    income: '$540K',
+    activeAssets: 9
+  },
+  {
+    name: 'Khác',
+    value: 8,
+    color: '#a855f7',
+    yield: '4.6%',
+    yoy: '+1.4%',
+    income: '$210K',
+    activeAssets: 7
+  }
 ];
 
 const pipelineItems = [
@@ -249,6 +289,42 @@ function renderAllocationChart(container, legendContainer, data) {
   });
 }
 
+function renderAllocationBreakdown(container, data) {
+  data.forEach((item) => {
+    const card = document.createElement('article');
+    card.className = 'allocation-card';
+    card.setAttribute('role', 'listitem');
+    card.innerHTML = `
+      <div class="allocation-card-header">
+        <span class="allocation-card-color" style="background:${item.color}"></span>
+        <div>
+          <strong>${item.name}</strong>
+          <span>${item.value}% danh mục</span>
+        </div>
+      </div>
+      <dl class="allocation-metrics">
+        <div>
+          <dt>Lợi tức 12T</dt>
+          <dd>${item.yield}</dd>
+        </div>
+        <div>
+          <dt>Tăng trưởng YoY</dt>
+          <dd>${item.yoy}</dd>
+        </div>
+        <div>
+          <dt>Dòng tiền năm</dt>
+          <dd>${item.income}</dd>
+        </div>
+        <div>
+          <dt>Tài sản hoạt động</dt>
+          <dd>${item.activeAssets}</dd>
+        </div>
+      </dl>
+    `;
+    container.append(card);
+  });
+}
+
 function renderTimeline(container, items) {
   items.forEach((item) => {
     const li = document.createElement('li');
@@ -290,12 +366,14 @@ function init() {
   const performanceChart = document.getElementById('performance-chart');
   const allocationChart = document.getElementById('allocation-chart');
   const allocationLegend = document.getElementById('allocation-legend');
+  const allocationBreakdown = document.getElementById('allocation-breakdown');
   const pipelineList = document.getElementById('pipeline-list');
   const activityList = document.getElementById('activity-list');
   const taskList = document.getElementById('task-list');
 
   renderPerformanceChart(performanceChart, performanceData);
   renderAllocationChart(allocationChart, allocationLegend, allocationData);
+  renderAllocationBreakdown(allocationBreakdown, allocationData);
   renderTimeline(pipelineList, pipelineItems);
   renderList(activityList, activities, 'activity-item');
   renderList(taskList, tasks, 'task-item');
