@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ting RWA Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">Ting<span>RWA</span></div>
+        <nav class="menu">
+          <a class="menu-item active" href="#">
+            <span aria-hidden="true">📊</span>
+            Tổng quan
+          </a>
+          <a class="menu-item" href="#">
+            <span aria-hidden="true">💼</span>
+            Danh mục tài sản
+          </a>
+          <a class="menu-item" href="#">
+            <span aria-hidden="true">📈</span>
+            Hiệu suất
+          </a>
+          <a class="menu-item" href="#">
+            <span aria-hidden="true">🔔</span>
+            Thông báo
+          </a>
+          <a class="menu-item" href="#">
+            <span aria-hidden="true">⚙️</span>
+            Cài đặt
+          </a>
+        </nav>
+        <div class="plan-upgrade">
+          <h4>Nâng cấp gói</h4>
+          <p>Truy cập phân tích nâng cao và báo cáo chuyên sâu.</p>
+          <button type="button">Khám phá Premium</button>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div class="topbar-info">
+            <h1>Tổng quan danh mục RWA</h1>
+            <p>Cập nhật dữ liệu trực tiếp từ các tài sản thực thế</p>
+          </div>
+          <div class="topbar-actions">
+            <div class="search">
+              <input type="search" placeholder="Tìm kiếm tài sản..." />
+            </div>
+            <button class="action-button" type="button">+ Thêm tài sản</button>
+            <button class="icon-button" type="button" aria-label="Thông báo">
+              🔔
+            </button>
+            <div class="avatar" aria-hidden="true">TL</div>
+          </div>
+        </header>
+
+        <section class="kpi-grid">
+          <article class="kpi-card">
+            <div class="kpi-label">Giá trị danh mục</div>
+            <div class="kpi-value">$4.28M</div>
+            <div class="kpi-trend positive">+5.4% so với tháng trước</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-label">Thu nhập thụ động</div>
+            <div class="kpi-value">$82.4K</div>
+            <div class="kpi-trend positive">+12.9% YoY</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-label">Tỉ lệ lấp đầy</div>
+            <div class="kpi-value">93.6%</div>
+            <div class="kpi-trend neutral">Ổn định</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-label">Số hợp đồng hoạt động</div>
+            <div class="kpi-value">128</div>
+            <div class="kpi-trend positive">+18 trong tháng này</div>
+          </article>
+        </section>
+
+        <section class="grid-two">
+          <article class="panel" aria-labelledby="performance-title">
+            <header class="panel-header">
+              <div>
+                <h2 id="performance-title">Hiệu suất danh mục</h2>
+                <p>Giá trị danh mục theo tháng (USD)</p>
+              </div>
+              <div class="panel-controls">
+                <select>
+                  <option>12 tháng</option>
+                  <option>6 tháng</option>
+                  <option>3 tháng</option>
+                </select>
+              </div>
+            </header>
+            <div class="chart" id="performance-chart" role="img" aria-label="Biểu đồ đường thể hiện giá trị danh mục theo tháng"></div>
+          </article>
+
+          <article class="panel" aria-labelledby="allocation-title">
+            <header class="panel-header">
+              <div>
+                <h2 id="allocation-title">Phân bổ tài sản</h2>
+                <p>Phân bổ % theo lớp tài sản</p>
+              </div>
+              <div class="legend" id="allocation-legend" aria-hidden="true"></div>
+            </header>
+            <div class="chart" id="allocation-chart" role="img" aria-label="Biểu đồ thanh thể hiện phân bổ tài sản"></div>
+          </article>
+        </section>
+
+        <section class="grid-three">
+          <article class="panel" aria-labelledby="pipeline-title">
+            <header class="panel-header">
+              <div>
+                <h2 id="pipeline-title">Pipeline giao dịch</h2>
+                <p>Trạng thái cập nhật gần nhất</p>
+              </div>
+              <button class="ghost-button" type="button">Xem tất cả</button>
+            </header>
+            <ul class="timeline" id="pipeline-list"></ul>
+          </article>
+
+          <article class="panel" aria-labelledby="activity-title">
+            <header class="panel-header">
+              <div>
+                <h2 id="activity-title">Hoạt động gần đây</h2>
+                <p>Nhật ký các sự kiện nổi bật</p>
+              </div>
+            </header>
+            <ul class="activity" id="activity-list"></ul>
+          </article>
+
+          <article class="panel" aria-labelledby="tasks-title">
+            <header class="panel-header">
+              <div>
+                <h2 id="tasks-title">Tác vụ ưu tiên</h2>
+                <p>Việc cần xử lý trong tuần này</p>
+              </div>
+              <button class="ghost-button" type="button">+ Tạo tác vụ</button>
+            </header>
+            <ul class="tasks" id="task-list"></ul>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
