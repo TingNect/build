@@ -1,170 +1,256 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ting RWA Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-      crossorigin
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TingGold — Limited Jewelry Drop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="dashboard">
-      <aside class="sidebar">
-        <div class="logo">Ting<span>RWA</span></div>
-        <nav class="menu">
-          <a class="menu-item active" href="#">
-            <span aria-hidden="true">📊</span>
-            Tổng quan
-          </a>
-          <a class="menu-item" href="#">
-            <span aria-hidden="true">💼</span>
-            Danh mục tài sản
-          </a>
-          <a class="menu-item" href="#">
-            <span aria-hidden="true">📈</span>
-            Hiệu suất
-          </a>
-          <a class="menu-item" href="#">
-            <span aria-hidden="true">🔔</span>
-            Thông báo
-          </a>
-          <a class="menu-item" href="#">
-            <span aria-hidden="true">⚙️</span>
-            Cài đặt
-          </a>
+    <div class="container">
+      <div class="header" role="banner">
+        <h1>TingGold — Limited Jewelry Drop</h1>
+        <nav class="nav" aria-label="Main">
+          <a href="#collection" id="nav-collection">Collection</a>
+          <a href="#purchase" id="nav-purchase">Purchase</a>
+          <a href="#certificate" id="nav-certificate">Certificate</a>
+          <a href="#dashboard" id="nav-dashboard">Dashboard</a>
         </nav>
-        <div class="plan-upgrade">
-          <h4>Nâng cấp gói</h4>
-          <p>Truy cập phân tích nâng cao và báo cáo chuyên sâu.</p>
-          <button type="button">Khám phá Premium</button>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab active" data-tab="collection" role="tab" aria-selected="true">
+          Collection
+        </button>
+        <button class="tab" data-tab="purchase" role="tab" aria-selected="false">
+          Purchase
+        </button>
+        <button class="tab" data-tab="certificate" role="tab" aria-selected="false">
+          Certificate
+        </button>
+        <button class="tab" data-tab="dashboard" role="tab" aria-selected="false">
+          Dashboard
+        </button>
+      </div>
+
+      <section id="view-collection" class="view">
+        <div class="hero card">
+          <div class="kpi">
+            <span class="badge">Drop Countdown</span>
+            <span
+              class="timer"
+              id="countdown"
+              role="timer"
+              aria-live="polite"
+              aria-atomic="true"
+            >--:--:--</span>
+          </div>
+          <div class="small">
+            Tiers: <b>Founders</b> → Allowlist → Public | Limit 2 sản phẩm/khách
+          </div>
         </div>
-      </aside>
 
-      <main class="content">
-        <header class="topbar">
-          <div class="topbar-info">
-            <h1>Tổng quan danh mục RWA</h1>
-            <p>Cập nhật dữ liệu trực tiếp từ các tài sản thực thế</p>
-          </div>
-          <div class="topbar-actions">
-            <div class="search">
-              <input type="search" placeholder="Tìm kiếm tài sản..." />
+        <div class="grid" aria-live="polite">
+          <div class="card" style="grid-column: span 4">
+            <div class="thumb">RING — Macro 4K</div>
+            <h3>Signature Ring</h3>
+            <div class="small">Au 18K · Ruby micro-engraved · Seri TGL-2025-###</div>
+            <div class="flex">
+              <span class="badge" id="stock-ring">Còn: 312/500</span>
+              <button class="btn" data-goto="purchase" data-sku="RING">Đặt</button>
             </div>
-            <button class="action-button" type="button">+ Thêm tài sản</button>
-            <button class="icon-button" type="button" aria-label="Thông báo">
-              🔔
-            </button>
-            <div class="avatar" aria-hidden="true">TL</div>
           </div>
-        </header>
+          <div class="card" style="grid-column: span 4">
+            <div class="thumb">PENDANT — Macro 4K</div>
+            <h3>Signature Pendant</h3>
+            <div class="small">Au 18K · Ruby · Laser QR</div>
+            <div class="flex">
+              <span class="badge" id="stock-pendant">Còn: 201/500</span>
+              <button class="btn" data-goto="purchase" data-sku="PENDANT">Đặt</button>
+            </div>
+          </div>
+          <div class="card" style="grid-column: span 4">
+            <div class="thumb">BRACELET — Macro 4K</div>
+            <h3>Signature Bracelet</h3>
+            <div class="small">Au 18K · Ruby · Laser micro</div>
+            <div class="flex">
+              <span class="badge" id="stock-bracelet">Còn: 97/500</span>
+              <button class="btn" data-goto="purchase" data-sku="BRACELET">Đặt</button>
+            </div>
+          </div>
+        </div>
 
-        <section class="kpi-grid">
-          <article class="kpi-card">
-            <div class="kpi-label">Giá trị danh mục</div>
-            <div class="kpi-value">$4.28M</div>
-            <div class="kpi-trend positive">+5.4% so với tháng trước</div>
-          </article>
-          <article class="kpi-card">
-            <div class="kpi-label">Thu nhập thụ động</div>
-            <div class="kpi-value">$82.4K</div>
-            <div class="kpi-trend positive">+12.9% YoY</div>
-          </article>
-          <article class="kpi-card">
-            <div class="kpi-label">Tỉ lệ lấp đầy</div>
-            <div class="kpi-value">93.6%</div>
-            <div class="kpi-trend neutral">Ổn định</div>
-          </article>
-          <article class="kpi-card">
-            <div class="kpi-label">Số hợp đồng hoạt động</div>
-            <div class="kpi-value">128</div>
-            <div class="kpi-trend positive">+18 trong tháng này</div>
-          </article>
-        </section>
+        <div class="card">
+          <h3>Chống giả — Chứng thư số</h3>
+          <p class="small">
+            Mỗi sản phẩm có <b>laser ID</b> vi mô &amp; chứng thư số (hash hồ sơ + ảnh macro).
+            Quét QR để kiểm tra online.
+          </p>
+        </div>
+      </section>
 
-        <section class="grid-two">
-          <article class="panel" aria-labelledby="performance-title">
-            <header class="panel-header">
-              <div>
-                <h2 id="performance-title">Hiệu suất danh mục</h2>
-                <p>Giá trị danh mục theo tháng (USD)</p>
+      <section id="view-purchase" class="view hidden" aria-hidden="true">
+        <div class="card">
+          <div class="flex">
+            <span class="badge" id="tier-badge">Tier đang mở: Allowlist</span>
+            <span class="badge">
+              Giữ chỗ:
+              <span
+                id="hold"
+                role="timer"
+                aria-live="polite"
+                aria-atomic="true"
+              >05:00</span>
+            </span>
+          </div>
+          <div class="sep"></div>
+          <div class="grid">
+            <div style="grid-column: span 6">
+              <div class="thumb" id="preview">Ảnh sản phẩm 360°</div>
+            </div>
+            <div style="grid-column: span 6">
+              <h3 id="selected-product">Signature Ring</h3>
+              <div class="small">Au 18K · Ruby · Seri ngẫu nhiên nếu không chọn</div>
+              <div class="qty" id="qty">
+                <button id="q-">−</button>
+                <div id="qv">1</div>
+                <button id="q+">+</button>
+                <span class="small">(Giới hạn 2/khách/đợt)</span>
               </div>
-              <div class="panel-controls">
-                <select>
-                  <option>12 tháng</option>
-                  <option>6 tháng</option>
-                  <option>3 tháng</option>
+              <div class="notice">
+                Thanh toán yêu cầu SMS OTP &amp; Captcha. Dữ liệu được mã hoá khi truyền.
+              </div>
+              <div class="grid form-grid">
+                <input class="input" placeholder="Họ tên" />
+                <input class="input" placeholder="Số điện thoại" />
+                <input class="input" placeholder="Email" />
+                <input class="input" placeholder="CCCD (KYC nhẹ)" />
+                <input class="input full" placeholder="Địa chỉ giao nhận" />
+                <select class="input">
+                  <option>Chọn size</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
                 </select>
               </div>
-            </header>
-            <div class="chart" id="performance-chart" role="img" aria-label="Biểu đồ đường thể hiện giá trị danh mục theo tháng"></div>
-          </article>
-
-          <article class="panel" aria-labelledby="allocation-title">
-            <header class="panel-header">
-              <div>
-                <h2 id="allocation-title">Phân bổ tài sản</h2>
-                <p>Phân bổ % theo lớp tài sản</p>
+              <div class="flex form-actions">
+                <button class="btn primary" id="pay-qr">Thanh toán QR</button>
+                <button class="btn">Thẻ nội địa</button>
+                <button class="btn ghost" id="back-to-collection">Quay lại</button>
               </div>
-              <div class="legend" id="allocation-legend" aria-hidden="true"></div>
-            </header>
-            <div class="chart" id="allocation-chart" role="img" aria-label="Biểu đồ thanh thể hiện phân bổ tài sản"></div>
-            <div class="allocation-detail" aria-live="polite">
-              <div class="allocation-detail-header">
-                <h3>Danh mục tài sản</h3>
-                <p>Bổ sung thông tin hiệu suất, dòng tiền và trạng thái vận hành</p>
-              </div>
-              <div
-                id="allocation-breakdown"
-                class="allocation-breakdown"
-                role="list"
-                aria-label="Chi tiết từng danh mục tài sản"
-              ></div>
+              <p class="small">
+                Thanh toán thành công → trang Reveal hiển thị <b>Số seri</b> +
+                <b>Certificate link</b>.
+              </p>
             </div>
-          </article>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="grid-three">
-          <article class="panel" aria-labelledby="pipeline-title">
-            <header class="panel-header">
-              <div>
-                <h2 id="pipeline-title">Pipeline giao dịch</h2>
-                <p>Trạng thái cập nhật gần nhất</p>
+      <section id="view-certificate" class="view hidden" aria-hidden="true">
+        <div class="card">
+          <div class="grid">
+            <div style="grid-column: span 7">
+              <div class="thumb">Ảnh Macro 4K</div>
+            </div>
+            <div style="grid-column: span 5">
+              <h3 id="cert-title">Certificate #TGL-2025-012</h3>
+              <table class="table" id="cert-table" aria-describedby="certificate meta">
+                <tr><th>Model</th><td>Signature Ring</td></tr>
+                <tr><th>Material</th><td>Au 18K</td></tr>
+                <tr><th>Gem</th><td>Ruby</td></tr>
+                <tr><th>Weight</th><td>5.20g</td></tr>
+                <tr><th>Laser ID</th><td>LR-9FQ2-7A</td></tr>
+                <tr><th>Photo Hash</th><td>sha256: 0x…ab91</td></tr>
+                <tr><th>Cert Hash</th><td>sha256: 0x…e3d4</td></tr>
+                <tr><th>Issued</th><td id="issued-at">2025-12-10 10:05</td></tr>
+              </table>
+              <div class="notice small">
+                QR trên sản phẩm trỏ về trang này. Dữ liệu cá nhân được ẩn (masking).
               </div>
-              <button class="ghost-button" type="button">Xem tất cả</button>
-            </header>
-            <ul class="timeline" id="pipeline-list"></ul>
-          </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <article class="panel" aria-labelledby="activity-title">
-            <header class="panel-header">
-              <div>
-                <h2 id="activity-title">Hoạt động gần đây</h2>
-                <p>Nhật ký các sự kiện nổi bật</p>
-              </div>
-            </header>
-            <ul class="activity" id="activity-list"></ul>
-          </article>
+      <section id="view-dashboard" class="view hidden" aria-hidden="true">
+        <div class="grid">
+          <div class="card" style="grid-column: span 4">
+            <h3>Traffic</h3>
+            <div class="kpi">
+              <div class="value" id="visits">12,480</div>
+              <div class="small">visits / 24h</div>
+            </div>
+            <div class="small">
+              Queue peak: <span id="peak">1,240</span> | Error rate: <span id="err">0.09%</span>
+            </div>
+          </div>
+          <div class="card" style="grid-column: span 4">
+            <h3>Conversion</h3>
+            <div class="kpi">
+              <div class="value" id="conv">3.2%</div>
+              <div class="small">ATC→Paid</div>
+            </div>
+            <div class="small">Abandoned: 7.4% | OTP fail: 1.1%</div>
+          </div>
+          <div class="card" style="grid-column: span 4">
+            <h3>Anti-bot</h3>
+            <div class="kpi">
+              <div class="value" id="blocked">842</div>
+              <div class="small">blocked</div>
+            </div>
+            <div class="small">IP flagged: 211 | Device dup: 97</div>
+          </div>
+        </div>
 
-          <article class="panel" aria-labelledby="tasks-title">
-            <header class="panel-header">
-              <div>
-                <h2 id="tasks-title">Tác vụ ưu tiên</h2>
-                <p>Việc cần xử lý trong tuần này</p>
-              </div>
-              <button class="ghost-button" type="button">+ Tạo tác vụ</button>
-            </header>
-            <ul class="tasks" id="task-list"></ul>
-          </article>
-        </section>
-      </main>
+        <div class="card">
+          <div class="flex" style="justify-content: space-between">
+            <h3>Orders (sample)</h3>
+            <button class="btn ghost" id="download-csv">Tải CSV nhiệm vụ (Notion/Jira)</button>
+          </div>
+          <table class="table">
+            <tr>
+              <th>Order</th>
+              <th>User</th>
+              <th>SKU</th>
+              <th>Qty</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td>#TG-00102</td>
+              <td>0987****12</td>
+              <td>RING-18K-RB</td>
+              <td>1</td>
+              <td>Paid</td>
+              <td><button class="btn" id="issue-1">Issue Cert</button></td>
+            </tr>
+            <tr>
+              <td>#TG-00103</td>
+              <td>0903****55</td>
+              <td>PEND-18K-RB</td>
+              <td>2</td>
+              <td>Packed</td>
+              <td><button class="btn">Ship</button></td>
+            </tr>
+            <tr>
+              <td>#TG-00104</td>
+              <td>0971****91</td>
+              <td>BRAC-18K-RB</td>
+              <td>1</td>
+              <td>Queued</td>
+              <td><button class="btn">Approve</button></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <footer>© 2025 TingGold — Single-file Mock UI</footer>
     </div>
 
     <script src="app.js" type="module"></script>
